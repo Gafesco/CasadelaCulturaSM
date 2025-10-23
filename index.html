@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casa de la Cultura Sanmartineca</title>
+
+    <!-- Colores de interfaz (tema claro) -->
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Fuente: Inter (mejor legibilidad) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Icono (puedes usar el tuyo) -->
+    <link rel="icon" type="image/png" href="/icon-192.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- App React -->
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Service Worker -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js").catch(console.error);
+        });
+      }
+    </script>
+  </body>
+</html>
