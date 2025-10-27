@@ -226,3 +226,29 @@ ul.clean{list-style:none; padding:0; margin:0}
   -webkit-box-orient:vertical;
   overflow:hidden;
 }
+/* ===== Logo inferior del menú ===== */
+.menu-logo {
+  margin-top: 40px;        /* más espacio para respiración visual */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-logo-img {
+  width: 380px;            /* 🔹 más grande que antes (260px → 380px) */
+  max-width: 90%;          /* 🔹 mantiene proporción en pantallas pequeñas */
+  height: auto;
+  opacity: 0.95;
+  transition: transform 0.2s ease;
+}
+
+.menu-logo-img:hover {
+  transform: scale(1.03);
+}
+
+/* En móviles pequeños, ajustamos tamaño automáticamente */
+@media (max-width: 480px) {
+  .menu-logo-img {
+    width: 300px;
+  }
+}

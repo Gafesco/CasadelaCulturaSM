@@ -13,6 +13,16 @@ export default function Home() {
           <Link className="btn primary" to="/qr">ESCANEAR QR (CASA DE LA CULTURA)</Link>
           <button className="btn danger" onClick={handleExit}>SALIR</button>
         </div>
+
+        {/* 🔹 Imagen inferior centrada */}
+        <div className="menu-logo">
+          <img
+            src="/img/casadelacultura.png"
+            alt="Logo Casa de la Cultura Sanmartineca"
+            className="menu-logo-img"
+            loading="lazy"
+          />
+        </div>
       </main>
     </>
   );
