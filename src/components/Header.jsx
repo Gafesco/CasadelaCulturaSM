@@ -13,10 +13,12 @@ export default function Header({ title, home=false, list=false, scanAgain=false 
       <div className="brand">
         {/* Si luego añades el PNG del logo: /public/img/logo-cc.png */}
         {/* <img className="brand-logo" src="/img/logo-cc.png" alt="Casa de la Cultura" /> */}
-        <h1 className="header-title">{title}</h1>
+        {/* Tooltip con el título completo por si se recorta con “…” */}
+        <h1 className="header-title" title={title}>{title}</h1>
       </div>
 
       <div className="header-right" />
     </header>
   );
 }
+
