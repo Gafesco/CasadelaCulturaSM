@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       <div className="hero">
-        <h1>Casa de la Cultura Sanmartineca</h1>
+        <h1>CASA DE LA CULTURA SANMARTINECA</h1>
       </div>
 
       <main className="container">
