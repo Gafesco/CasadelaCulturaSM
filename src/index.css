@@ -142,6 +142,22 @@ body{
 .caption{max-width:900px; margin:10px auto 0; color:#4a5a6a; font-size:14px; text-align:center;}
 .desc{max-width:900px; margin:18px auto 0; line-height:1.75; font-size:17px; color:var(--text); white-space:pre-line;}
 
+/* Título interno para el detalle (fuera del header) */
+.page-title{
+  margin: 4px auto 8px;
+  max-width: 900px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+.page-title.centered{ text-align:center; }  /* ← añadido */
+
+@media (max-width: 380px){
+  .page-title{ font-size: 20px; }
+}
+
 /* ===== QR ===== */
 .notice{
   display:flex; align-items:center; gap:12px;

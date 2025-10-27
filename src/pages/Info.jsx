@@ -9,7 +9,6 @@ export default function Info() {
   const [items, setItems] = useState(null);
   const [sel, setSel] = useState(null);
 
-  // ¿venimos desde el escáner?
   const fromQR = sp.get("from") === "qr";
 
   useEffect(() => {
@@ -29,13 +28,12 @@ export default function Info() {
   if (sel) {
     return (
       <>
-        <Header
-          title={sel.titulo}
-          home={true}
-          list={!fromQR}
-          scanAgain={fromQR}
-        />
+        {/* Header sin título */}
+        <Header home={true} list={!fromQR} scanAgain={fromQR} />
         <main className="container with-header">
+          {/* TÍTULO CENTRADO DENTRO DE LA PÁGINA */}
+          <h2 className="page-title centered">{sel.titulo}</h2>
+
           {sel.imagen && (
             <div className="exhibit-frame" aria-label={`Imagen de ${sel.titulo}`}>
               <img
@@ -48,10 +46,7 @@ export default function Info() {
             </div>
           )}
 
-          {/* leyenda bajo la imagen si está en datos */}
           {sel.creditos && <p className="caption">{sel.creditos}</p>}
-
-          {/* descripción larga; respeta \n\n como párrafos (ver CSS .desc) */}
           <p className="desc" style={{ marginTop: 12 }}>{sel.descripcion}</p>
         </main>
       </>
