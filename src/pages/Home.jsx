@@ -9,9 +9,9 @@ export default function Home() {
 
       <main className="container">
         <div className="stack">
-          <Link className="btn primary" to="/info">Ver información</Link>
-          <Link className="btn primary" to="/qr">QR</Link>
-          <button className="btn danger" onClick={handleExit}>Salir</button>
+          <Link className="btn primary" to="/info">VER INFORMACIÓN</Link>
+          <Link className="btn primary" to="/qr">ESCANEAR QR (CASA DE LA CULTURA)</Link>
+          <button className="btn danger" onClick={handleExit}>SALIR</button>
         </div>
       </main>
     </>
