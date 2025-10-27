@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Casa de la Cultura Sanmartineca</title>
 
+    <!-- Versión del sitio (actualízala en cada release: 1.0.1, 1.0.2, …) -->
+    <meta name="version" content="1.0.0" />
+
     <!-- Colores de interfaz (tema claro) -->
     <meta name="theme-color" content="#ffffff" />
     <meta name="color-scheme" content="light" />
 
     <!-- Fuente: Inter (mejor legibilidad) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Manifest PWA -->
+    <!-- Manifest PWA (no registramos SW, solo deja el manifest si quieres iconos) -->
     <link rel="manifest" href="/manifest.webmanifest" />
 
     <!-- Icono -->
@@ -28,7 +34,7 @@
 
     <!-- Limpieza de Service Workers/cachés antiguos -->
     <script>
-      (async function cleanupOldSW(){
+      (async function cleanupOldSW() {
         if (!("serviceWorker" in navigator)) return;
         try {
           const regs = await navigator.serviceWorker.getRegistrations();
@@ -40,6 +46,32 @@
         } catch {}
       })();
     </script>
-    <!-- Importante: ya NO registramos ningún SW -->
+
+    <!-- Auto-chequeo de nueva versión en el servidor y recarga automática una sola vez -->
+    <script>
+      (async () => {
+        try {
+          // Evita sobrecargar: si quieres, limita a producción con vercel.app o tu dominio
+          const res = await fetch("/index.html", { cache: "no-store" });
+          const text = await res.text();
+          const remoteVersionMatch = text.match(
+            /<meta name="version" content="([^"]+)"/
+          );
+          const localVersion = document
+            .querySelector("meta[name='version']")
+            ?.getAttribute("content");
+
+          const remoteVersion = remoteVersionMatch ? remoteVersionMatch[1] : null;
+
+          if (localVersion && remoteVersion && localVersion !== remoteVersion) {
+            console.log("🔄 Nueva versión detectada:", remoteVersion, "(local:", localVersion, ")");
+            location.reload();
+          }
+        } catch (e) {
+          console.warn("No se pudo verificar la versión más reciente.", e);
+        }
+      })();
+    </script>
+    <!-- Importante: ya NO registramos ningún Service Worker -->
   </body>
 </html>
